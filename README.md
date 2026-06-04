@@ -4,8 +4,31 @@
 
 ## 当前版本
 
-- Skill release: `v0.1.0`
+- Skill release: `v0.1.1`
 - 版本文件见 [VERSION](VERSION)
+
+## 安装到写作项目
+
+发布版不需要额外安装。最简单的用法就是：
+
+1. 下载 GitHub Release 里的压缩包。
+2. 直接解压到你的写作项目文件夹里。
+3. 保持 `agents/`、`modules/`、`web-copy/` 这三个目录的相对位置不要拆散。
+
+推荐目录结构：
+
+```text
+你的写作项目/
+├── master-writing-collection/
+│   ├── agents/
+│   ├── modules/
+│   └── web-copy/
+├── 成稿/
+├── 设定/
+└── 章节草稿/
+```
+
+如果你只是想把发布版放进现有工程里，直接解压进去即可，不需要再跑安装命令。
 
 ## 适合谁
 
@@ -15,6 +38,8 @@
 
 ## 使用方式
 
+### 网页端版本
+
 如果你只是网页端用户，不需要理解 Skills，也不需要 API：
 
 1. 直接进入 [web-copy/](web-copy/)。
@@ -23,6 +48,45 @@
 4. 粘贴到 DeepSeek、Kimi、豆包、通义、ChatGPT 等网页端工具里使用。
 
 如果你想看每个提示词背后的方法说明，再进入 [INDEX.md](INDEX.md) 和 [modules/](modules/)。
+
+### Agent / Skill 版本
+
+如果你使用支持本地技能或本地知识目录的 agent，把整个发布版文件夹保留在你的写作工作区里即可。
+
+推荐做法：
+
+1. 把 release 解压到写作项目目录中。
+2. 让 agent 从 [agents/SKILL.md](agents/SKILL.md) 作为入口。
+3. 先让它读 `agents/skill-vector-table.md` 做粗分流。
+4. 再按需读取 `agents/references/request-router.md` 和 `modules/` 里的对应模块。
+
+典型调用方式可以是：
+
+```text
+使用 $master-writing-collection，帮我诊断这一章为什么太平。
+```
+
+或者在不支持自动发现 skill 名称时，直接说明路径：
+
+```text
+请读取 ./master-writing-collection/agents/SKILL.md，并按它的路由规则帮我处理这段小说。
+```
+
+### API 集成版本
+
+如果你走的是 API 或自建工作流，可以把这个发布版当作一个本地 skill 包来用。
+
+最稳的接法是：
+
+1. 把 release 解压到与你的正文同一个 workspace。
+2. 先加载 [agents/SKILL.md](agents/SKILL.md)。
+3. 再加载 `agents/skill-vector-table.md` 和 `agents/references/request-router.md`。
+4. 最后只按需加载 1-2 个相关模块，不要整库全塞进上下文。
+
+如果你的 API 工作流不支持动态读本地文件，也可以退一步：
+
+- 直接把 `web-copy/*.md` 当成可复制提示词模板使用。
+- 或者手动注入 `agents/SKILL.md` 加一个目标模块，例如 `modules/02-drafting/02-scene-craft.md`。
 
 ## 三层结构
 

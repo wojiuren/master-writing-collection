@@ -16,6 +16,14 @@ This skill provides access to a library of practical writing modules organized b
 3. Load only the module(s) listed under the matching task category. Do not load unrelated modules.
 4. For web-oriented prompt templates, refer to `../web-copy/`.
 
+## Workspace Placement
+
+This release is designed to live directly inside the user's writing workspace after unzip.
+
+- Keep `agents/`, `modules/`, and `web-copy/` as sibling directories.
+- Preserve relative paths if the release is copied into another writing project.
+- For API wrappers without automatic skill discovery, start from this file, then load only the routing files and matched modules.
+
 ## Module Locations
 
 All paths are relative to this skill file.
