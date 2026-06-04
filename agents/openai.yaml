@@ -1,0 +1,4 @@
+interface:
+  display_name: "大师写作合集"
+  short_description: "Structured writing guidance for Chinese fiction: prewriting, drafting, revision, and line polish"
+  default_prompt: "Use $master-writing-collection when the user needs structured writing guidance — inspiration, plot, character, scene, pacing, revision, or workshop feedback. Read agents/skill-vector-table.md for routing, then load only the relevant module."
