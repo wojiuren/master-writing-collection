@@ -4,14 +4,14 @@
 
 ## 当前版本
 
-- Skill release: `v0.1.1`
+- 发布版本：`v0.1.2`
 - 版本文件见 [VERSION](VERSION)
 
 ## 安装到写作项目
 
 发布版不需要额外安装。最简单的用法就是：
 
-1. 下载 GitHub Release 里的压缩包。
+1. 下载 GitHub 发布页里的压缩包。
 2. 直接解压到你的写作项目文件夹里。
 3. 保持 `agents/`、`modules/`、`web-copy/` 这三个目录的相对位置不要拆散。
 
@@ -49,13 +49,13 @@
 
 如果你想看每个提示词背后的方法说明，再进入 [INDEX.md](INDEX.md) 和 [modules/](modules/)。
 
-### Agent / Skill 版本
+### Agent / 技能版
 
 如果你使用支持本地技能或本地知识目录的 agent，把整个发布版文件夹保留在你的写作工作区里即可。
 
 推荐做法：
 
-1. 把 release 解压到写作项目目录中。
+1. 把发布包解压到写作项目目录中。
 2. 让 agent 从 [agents/SKILL.md](agents/SKILL.md) 作为入口。
 3. 先让它读 `agents/skill-vector-table.md` 做粗分流。
 4. 再按需读取 `agents/references/request-router.md` 和 `modules/` 里的对应模块。
@@ -72,13 +72,13 @@
 请读取 ./master-writing-collection/agents/SKILL.md，并按它的路由规则帮我处理这段小说。
 ```
 
-### API 集成版本
+### API 集成版
 
 如果你走的是 API 或自建工作流，可以把这个发布版当作一个本地 skill 包来用。
 
 最稳的接法是：
 
-1. 把 release 解压到与你的正文同一个 workspace。
+1. 把发布包解压到与你的正文同一个工作区。
 2. 先加载 [agents/SKILL.md](agents/SKILL.md)。
 3. 再加载 `agents/skill-vector-table.md` 和 `agents/references/request-router.md`。
 4. 最后只按需加载 1-2 个相关模块，不要整库全塞进上下文。
@@ -118,6 +118,6 @@
 | Agent 入口文件（SKILL.md + 向量表 + 路由表） | 约 9 KB | 4-5K tokens |
 | 典型首次加载（agent 入口 + 1-2 模块） | 约 20-30 KB | 12-18K tokens |
 
-Agent 端一次写作辅助请求加载 1-2 个模块，入口文件在后续同一次会话中不再重复加载。
+Agent 端一次写作辅助请求通常只加载 1-2 个模块，入口文件在后续同一次会话中不再重复加载。
 
 对比早期薄版本（约 2.4 KB/模块），每个模块多消耗约 2-3K tokens，但内容深度显著提升：包含多视角操作法、诊断清单、常见陷阱和可用示例。
